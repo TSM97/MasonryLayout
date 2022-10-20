@@ -1,38 +1,61 @@
-.App {
-  text-align: center;
+/* .container{
+    display: grid;
+    gap: 1em;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: auto;
+    margin:5%;
+    padding:2%;
+    margin-top:2%;
+    margin-bottom: 2%;
+    break-inside: avoid;
+    grid-auto-flow: dense;
+    border: solid rgb(214, 214, 214) 3px;
+    border-radius: 50px;
+    background-color: rgb(245, 245, 245);
+} */
+.container{
+    column-count: 3;
+    column-gap: 10px;
+    margin:5%;
+    padding:2%;
+    margin-top:2%;
+    margin-bottom: 2%;
+    break-inside: avoid;
+    border: solid rgb(214, 214, 214) 3px;
+    border-radius: 50px;
+    background-color: rgb(245, 245, 245);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@media screen and (max-width: 1200px){
+    .container{
+        column-count: 2;
+        column-gap: 7px;
+        margin:5%;
+          padding:2%;
+          margin-top:2%;
+          margin-bottom: 2%;
+          break-inside: avoid;
+          grid-auto-flow: dense;
+          border: solid rgb(214, 214, 214) 3px;
+          border-radius: 50px;
+          background-color: rgb(245, 245, 245);
+    }
+    
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@media screen and (max-width: 770px){
+    .container{
+        column-count: 1;
+        margin:5%;
+          padding:2%;
+          margin-top:2%;
+          margin-bottom: 2%;
+          break-inside: avoid;
+          grid-auto-flow: dense;
+          border:none;
+          border-radius:0px;
+          border-left: solid rgb(214, 214, 214) 3px;
+          background-color: white;
+    }
+    
 }
