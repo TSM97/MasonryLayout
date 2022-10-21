@@ -10,9 +10,9 @@ const Body = ({search}) =>{
   const [brews,setBrews]=useState([]);
   const [filterBrews, setFilterBrews] = useState([])
 
-  const Tinfo=shuffle((brews.map(({id,name,city,state,phone})=> {return {id,name,city,state,phone}} )));
+  const Tinfo=shuffle((filterBrews.map(({id,name,city,state,phone})=> {return {id,name,city,state,phone}} )));
 
-  const Ids=brews.map(({id},key)=>{
+  const Ids=filterBrews.map(({id},key)=>{
     let image=key+1;
     return {id,image:image+'b'}}
   );
@@ -22,9 +22,20 @@ const Body = ({search}) =>{
       const json = await fetch(BASE_URL);
       const data = await json.json();
       setBrews(data);
+      setFilterBrews(data)
     }
     fetchData().catch(console.error);
   },[]);
+
+  useEffect(()=>{
+    const filtered= brews.filter((data)=>{return data.name.toLowerCase().includes(search.toLowerCase())})
+    if(filtered.length===0){
+        setFilterBrews(brews)
+    }else
+    {console.log(filtered)
+    setFilterBrews(filtered)}
+  },[search])
+
 
   return(
     Tinfo.map((data,i)=>{
