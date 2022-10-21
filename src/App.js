@@ -1,15 +1,23 @@
+import {useState} from "react";
 import './App.css';
 import {Body} from "./Components";
 import {SearchBar} from './Components';
 
 
 function App() {
+  
+  const [search,setSearch]= useState(null);
 
+  const onSearch = (text) => {
+    setSearch(text);
+  };
+  console.log(search);
+  
   return (
     <>
-    <SearchBar></SearchBar>
+    <SearchBar onSearch={onSearch}></SearchBar>
     <div className="container">
-    <Body>
+    <Body search={search}>
     </Body>
     </div>
     </>

@@ -1,9 +1,9 @@
 import { useEffect ,useState} from "react";
 import Tab from "../Tab/Tab";
 
-const Body = () =>{
+const Body = ({search}) =>{
     const url = 'https://api.openbrewerydb.org/breweries';
-    const [Brews,SetBrews]=useState([])
+    const [brews,setBrews]=useState([])
 
     useEffect(()=>{
     //    const data=(fetch(url)
@@ -15,21 +15,30 @@ const Body = () =>{
     //         console.log("Not Success")
     //     }})
     //     .then(data=>console.log(data)))
-    //     SetBrews(data);
+    //     setBrews(data);
     const fetchData = async () => {
         const json = await fetch(url);
         const data = await json.json();
-        SetBrews(data);
+        setBrews(data);
     }
     fetchData().catch(console.error);
     },[])
 
-    const Tinfo=shuffle((Brews.map(({id,name,city,state,phone})=> {return {id,name,city,state,phone}} )))
+    let Tinfo=shuffle((brews.map(({id,name,city,state,phone})=> {return {id,name,city,state,phone}} )))
 
-    const Ids=Brews.map(({id},key)=>{
+    const Ids=brews.map(({id},key)=>{
         let image=key+1;
         return {id,image:image+'b'}}
     );
+
+//    useEffect(()=>{
+//     console.log(search)
+//    if(search===null ){}
+//    else {
+//     const searched = Tinfo.filter((data)=>data.name.toLowerCase().includes(search.toLowerCase()))
+//     setBrews(searched)}}
+//    ,[search])
+       
 
     return(
   
@@ -40,19 +49,17 @@ const Body = () =>{
             city={data.city}
             phone={data.phone}
             key={i}
-            ids={chooseImage(Ids,data.id)}
+            img={chooseImage(Ids,data.id)}
             >  
-            </Tab>)
+            </Tab>)           
         })
     )       
 
 }
 const chooseImage = (Ids,id) =>{
-    for(let i=0; Ids.length; i++){
-      if(Ids[i].id===id){
-        return Ids[i].image
-      }
-    }
+   
+    return Ids.find(element => element.id===id).image
+
 }
 
 const shuffle= arr => [...arr].sort(()=> Math.random() - 0.5);

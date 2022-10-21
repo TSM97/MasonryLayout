@@ -1,10 +1,10 @@
 import "./Tab.css"
 
-const Tab = ({id,name,city,phone,ids}) => {
+const Tab = ({id,name,city,phone,img}) => {
 
   return(
     <div className="tab">
-      <img className="img" src={require("../../../Images/"+ids+".jpg")} alt ="Brewery"/>
+      <img className="img" src={require("../../../Images/"+img+".jpg")} alt ="Brewery"/>
       <div className="info">
         <div>Brewery: {name}</div>
         <div>City: {city}</div>

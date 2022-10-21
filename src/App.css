@@ -20,7 +20,6 @@
     padding:2%;
     margin-top:2%;
     margin-bottom: 2%;
-    break-inside: avoid;
     border: solid rgb(214, 214, 214) 3px;
     border-radius: 50px;
     background-color: rgb(245, 245, 245);
